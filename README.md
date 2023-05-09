@@ -135,7 +135,6 @@ Feel free to check the [issues page](https://github.com/jodavid444/Blog_Applicat
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 ## ⭐️ Show your support <a name="support"></a>
 
 Leave a star if you like the project.
