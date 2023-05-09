@@ -1,2 +1,31 @@
 <h1>This is all posts</h1>
-<a href="../../">Home</a>
+<a href="../../" class="home-button">Home</a>
+<div class="user-container">
+  <img src= "<%=@user.photo%>" alt="Profile Picture"/>
+  <div class="user-info">
+    <h2><%=@user.name%></h2>
+    <p class="number-of-posts">Number of posts: <%= @user.posts_counter%></p>
+  </div>
+</div>
+<div>
+  <% Post.where(author_id: @user.id).each do |post|%>
+    <div class="user-posts-container">
+      <p>Post #<%=post.id%>: <%= link_to "#{post.title}", "#{user_posts_path}/#{post.id}"%></p>
+      <p><%= post.text[0...100]%>...</p>
+      <div>
+        <p>Comments: <%= post.comments_counter || 0%>, Likes <%= post.likes_counter || 0%></p >
+      </div>
+    </div>
+    <div class="post-comments">
+      <% if post.recent_comments.any? %>
+        <% post.recent_comments.each do |comment| %>
+          <div>
+            <p><%= User.find_by(id: comment.author_id).name %>: <%= comment.text[0...100] %>...</p>
+          </div>
+        <% end %>
+      <% else %>
+        <p>No comments added yet.</p>
+      <% end %>
+    </div>
+    <%end%>
+</div>
