@@ -1,2 +1,12 @@
-<h1>This is selected post</h1>
-<a href="../">Home</a>
+<a href="../../" class="home-button">Home</a>
+<div class="post-container">
+  <h3>Post #<%= @post.id%> by <%= @user.name%></h3>
+  <p><%= @post.text%></p>
+</div>
+  <div class="post-comments">
+    <% Comment.where(post_id:@post.id).each do |comment| %>
+    <div>
+      <p><%= User.find_by(id: comment.author_id).name%>: <%= comment.text%></p>
+    </div>
+    <%end%>
+  </div>
