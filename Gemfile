@@ -6,8 +6,6 @@ ruby '3.2.2'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.4', '>= 7.0.4.3'
 
-gem 'rubocop', '>= 1.0', '< 2.0'
-
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
@@ -72,3 +70,8 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
+
+gem 'pry'
+gem 'pry-byebug'
+gem 'rspec-rails', '~> 4.0.0.beta2'
+gem 'rubocop', '>= 1.0', '< 2.0'
