@@ -15,13 +15,15 @@ RSpec.describe 'UsersController', type: :request do
     end
 
     it 'Response body includes correct text' do
-      expect(response.body).to include('This is all users')
+      expect(response.body).to include('Users of website')
     end
   end
 
   context 'Make a get request to user' do
     before(:example) do
-      get '/users/1'
+      @user = User.create(name: 'Fuad', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Student',
+                          posts_counter: 0)
+      get "#{users_path}/#{@user.id}"
     end
 
     it 'Response status' do
@@ -33,7 +35,7 @@ RSpec.describe 'UsersController', type: :request do
     end
 
     it 'Response body includes correct text' do
-      expect(response.body).to include('View all users')
+      expect(response.body).to include('Details of user:')
     end
   end
 end
