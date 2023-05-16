@@ -1,30 +1,35 @@
-<div>
-  <a href="../../" class="home-button">Home</a>
-  <div class="post-container">
-    <h3>Post #<%= @post.id%> by <%= @user.name%></h3>
-    <p><%= @post.text%></p>
-    <br>
-    <p>Likes:<%= @post.likes_counter%></p>
-    <p>Comments:<%= @post.comments_counter%></p>
-    <br>
-    <div class="like-btn">
-    <%= form_with model: @post, url: "./#{@post.id}/likes", method: :post do |f|%>
-      <%= f.submit 'Like' %>
-    <%end%>
-    </div>
+<a href="../../" class="home-button">Home</a>
+<div class="post-container">
+<h3>Post <%= @post.title%> by <%= @user.name%></h3>
+  <p><%= @post.text%></p>
+  <br>
+  <p>Likes:<%= @post.likes_counter%></p>
+  <p>Comments:<%= @post.comments_counter%></p>
+  <br>
+  <div class="like-btn">
+  <%= form_with model: @post, url: "./#{@post.id}/likes", method: :post do |f|%>
+    <%= f.submit 'Like' %>
+  <%end%>
+  <% if can? :destroy, @post %>
+  <%= button_to "Delete a post", user_post_path(@post.author_id, @post.id), method: :delete, data: { turbo: false } %>
+  <% end %>
   </div>
-  <div class="create-btn">
-    <button><%= link_to 'Create comment', new_user_post_comment_path(@user.id,@post.id) %></button>
-  </div>
+</div>
+<div class="create-btn">
+  <button><%= link_to 'Create comment', new_user_post_comment_path(@user.id,@post.id) %></button>
+</div>
   <div class="post-comments">
-    <% if @post.recent_comments.any? %>
-      <% Comment.where(post_id:@post.id).each do |comment| %>
-        <div>
-          <p><%= User.find_by(id: comment.author_id).name %>: <%= comment.text[0...100] %>...</p>
-        </div>
-      <% end %>
-    <% else %>
-      <p>No comments added yet.</p>
-    <% end %>
-  </div>
+  <% if @post.recent_comments.any? %>
+    <% Comment.where(post_id:@post.id).each do |comment| %>
+      <div>
+      <p><%= User.find_by(id: comment.author_id).name %>: <%= comment.text[0...100] %>...</p>
+    </div>
+    <% if can? :destroy, comment %>
+    <%= button_to "Delete comment", user_post_comment_path(comment.author_id, comment.post, comment), method: :delete, data: { turbo: false } %>
+  <% end %>
+  <% end %>
+<% else %>
+  <p>No comments added yet.</p>
+<% end %>
+ </div>
 </div>
