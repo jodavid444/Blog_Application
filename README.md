@@ -1,8 +1,3 @@
-
-
-
-
-
 <a name="readme-top"></a>
 
 # 📗 Table of Contents
@@ -27,11 +22,9 @@
 - [❓ FAQ](#faq)
 - [📝 License](#license)
 
-
 # 📖 Blog App <a name="about-project"></a>
 
 > The Blog app is a classic example of a blog website. It a fully functional website that will show the list of posts and empower readers to interact with them by adding comments and liking posts.
-
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -75,7 +68,7 @@ In order to run this project you need:
 
 ### Setup
 
-Clone this repository by using the command line to your desired folder:  
+Clone this repository by using the command line to your desired folder:
 
 ```sh
 git clone https://github.com/jodavid444/Blog_Application.git
@@ -118,6 +111,13 @@ rails server
 
 - LinkedIn: [@joseph-david](https://www.linkedin.com/in/joseph-david-/)
 
+👤 **Ogaga Iyara**
+
+- GitHub: [@githubhandle](https://github.com/Ogaga01)
+
+- Twitter: [@twitterhandle](https://twitter.com/i_ogaga_n)
+
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/ogaga-iyara-0339b0105/)
 
 ## 🔭 Future Features <a name="future-features"></a>
 
@@ -125,13 +125,11 @@ rails server
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 ## 🤝 Contributing <a name="contributing"></a>
 
 Contributions, issues, and feature requests are welcome!
 
 Feel free to check the [issues page](https://github.com/jodavid444/Blog_Application/issues)
-
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

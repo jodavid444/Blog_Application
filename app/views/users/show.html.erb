@@ -1,33 +1,35 @@
-<h1>Details of user: <%= @user.name%></h1>
-<a href="../../" class="home-button">Home</a>
-<div class="user-container">
-  <img src= "<%=@user.photo%>" alt="Profile Picture"/>
-  <div class="user-info">
-    <h2><%=@user.name%></h2>
-    <p class="number-of-posts">Number of posts: <%= @user.posts_counter%></p>
-  </div>
-</div>
-<div class="create-btn">
-  <button><%= link_to 'Create post', new_user_post_path(user_id: @user.id) %></button>
-</div>
-<div class="user-bio-container">
-  <div class="user-bio-info">
-    <h3>Bio</h3>
-    <p><%= @user.bio%></p>
-  </div>
-</div>
 <div>
-  <% @user.recent_posts.each do |post|%>
-    <div class="user-posts-container">
-      <p>Post #<%= post.id%>: <%= link_to "#{post.title}", "./#{@user.id}/posts/#{post.id}" %></p>
-      <p><%= post.text[0...100]%>...</p>
-      <div>
-        <p>Comments: <%= post.comments_counter || 0%>, Likes <%= post.likes_counter || 0%></p >
-      </div>
+  <h1>Details of user: <%= @user.name%></h1>
+  <a href="../../" class="home-button">Home</a>
+  <div class="user-container">
+    <img src= "<%=@user.photo%>" alt="Profile Picture"/>
+    <div class="user-info">
+      <h2><%=@user.name%></h2>
+      <p class="number-of-posts">Number of posts: <%= @user.posts_counter%></p>
     </div>
-  <%end%>
-</div>
+  </div>
+  <div class="create-btn">
+    <button><%= link_to 'Create post', new_user_post_path(user_id: @user.id) %></button>
+  </div>
+  <div class="user-bio-container">
+    <div class="user-bio-info">
+      <h3>Bio</h3>
+      <p><%= @user.bio%></p>
+    </div>
+  </div>
+  <div>
+    <% @user.recent_posts.each do |post|%>
+      <div class="user-posts-container">
+        <p>Post #<%= post.id%>: <%= link_to "#{post.title}", "./#{@user.id}/posts/#{post.id}" %></p>
+        <p><%= post.text[0...100]%>...</p>
+        <div>
+          <p>Comments: <%= post.comments_counter || 0%>, Likes <%= post.likes_counter || 0%></p >
+        </div>
+      </div>
+    <%end%>
+  </div>
 
-<form action="./<%= @user.id%>/posts" method="get" class="see-all-posts">
-  <button type="submit">See all posts</button>
-</form>
+  <form action="./<%= @user.id%>/posts" method="get" class="see-all-posts">
+    <button type="submit">See all posts</button>
+  </form>
+</div>
