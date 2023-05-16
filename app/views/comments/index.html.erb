@@ -1,0 +1,5 @@
+<% Comment.where(post_id:@post.id).each do |comment| %>
+    <div>
+      <p><%= User.find_by(id: comment.author_id).name %>: <%= comment.text[0...100] %>...</p>
+    </div>
+  <%end%>
