@@ -1,5 +1,6 @@
 <h1>Users of website</h1>
-<% @users.each do |user|%>
+<div>
+  <% @users.each do |user|%>
   <div class="user-container">
     <img src= "<%=user.photo %>" alt="Profile Picture">
     <div class="user-info">
@@ -7,4 +8,5 @@
       <p class="number-of-posts">Number of posts: <%=user.posts_counter || 0%></p>
     </div>
   </div>
-<%end%>
+  <%end%>
+</div>
