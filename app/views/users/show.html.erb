@@ -23,6 +23,9 @@
       <p><%= post.text[0...100]%>...</p>
       <div>
         <p>Comments: <%= post.comments_counter || 0%>, Likes <%= post.likes_counter || 0%></p >
+        <% if can? :destroy, post %>
+        <%= button_to "Delete a post", user_post_path(post.author_id, post.id), method: :delete, data: { turbo: false } %>
+      <% end %>
       </div>
     </div>
   <%end%>
