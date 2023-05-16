@@ -3,11 +3,16 @@ Rails.application.routes.draw do
   root 'users#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
+  namespace :api do
+    get '/users/:user_id/posts', to: 'posts#index'
+    post '/comments', to: 'comments#create'
+    get '/users/:user_id/posts/:post_id/comments', to: 'comments#index'
+  end
   # Defines the root path route ("/")
   # root "articles#index"
   resources :users, only: [:index, :show] do
     resources :posts, only: [:index, :show, :new, :create, :destroy] do
-      resources :comments, only: [:new, :create, :destroy] 
+    resources :comments, only: [ :index, :new, :create, :destroy] 
     resources :likes, only: [:create]
   end
 end
