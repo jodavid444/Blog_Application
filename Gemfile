@@ -72,8 +72,6 @@ group :test do
 end
 
 gem 'cancancan
-gem 'pry'
-
 gem 'pry-byebug'
 gem 'rails-controller-testing'
 gem 'rspec-rails', '~> 4.0.0.beta2'
