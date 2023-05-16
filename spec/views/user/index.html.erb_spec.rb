@@ -8,7 +8,6 @@ RSpec.describe 'Users index view', type: :system do
       visit users_path
     end
 
-
     it 'Display users index content' do
       expect(page).to have_content('Joe')
       expect(page).to have_xpath("//img[@src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJHYna2rR4LtBNlA3gUSGxsmaiYY4PyxQEcA&usqp=CAU']")
