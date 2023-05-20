@@ -22,7 +22,7 @@ RSpec.describe 'PostsController', type: :request do
     end
   end
 
-  
+
   it 'I can see a section for pagination if there are more posts than fit on the view' do
     expect(response.body).to include('Next Page')
   end
