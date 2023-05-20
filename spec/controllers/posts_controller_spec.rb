@@ -22,6 +22,10 @@ RSpec.describe 'PostsController', type: :request do
     end
   end
 
+  it 'I can see a section for pagination if there are more posts than fit on the view' do
+    expect(response.body).to include('Next Page')
+  end
+
   context 'Make a get request to user' do
     before(:example) do
       @user = User.create(name: 'Fuad', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Student',

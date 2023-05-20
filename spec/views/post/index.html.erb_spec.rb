@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Posts index view', type: :system do
   describe 'Index page' do
-    subject { User.create(name: 'Fuad', photo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJHYna2rR4LtBNlA3gUSGxsmaiYY4PyxQEcA&usqp=CAU', bio: 'Solider', posts_counter: 0) }
+    subject { User.create(name: 'Joe', photo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJHYna2rR4LtBNlA3gUSGxsmaiYY4PyxQEcA&usqp=CAU', bio: 'Solider', posts_counter: 0) }
 
     it 'Display posts view content' do
       post = Post.create(author_id: subject.id, title: 'Hello 1', text: 'This is my post', comments_counter: 0,
@@ -15,7 +15,7 @@ RSpec.describe 'Posts index view', type: :system do
       visit user_posts_path(subject)
 
       expect(page).to have_xpath("//img[@src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJHYna2rR4LtBNlA3gUSGxsmaiYY4PyxQEcA&usqp=CAU']")
-      expect(page).to have_content('Fuad')
+      expect(page).to have_content('Joe')
       expect(page).to have_content('Number of posts: 3')
       expect(page).to have_content('Hello 1')
       expect(page).to have_content('This is my post')
