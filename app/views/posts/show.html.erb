@@ -1,28 +1,28 @@
-<a href="../../" class="home-button">Home</a>
-<div class="post-container">
-  <h3>Post #<%= @post.id%> by <%= @user.name%></h3>
-  <p><%= @post.text%></p>
-  <br>
-  <p>Likes:<%= @post.likes_counter%></p>
-  <p>Comments:<%= @post.comments_counter%></p>
-  <br>
-  <div class="like-btn">
-  <%= form_with model: @post, url: "./#{@post.id}/likes", method: :post do |f|%>
-    <%= f.submit 'Like' %>
-  <%end%>
+<div class="full_post">
+<div class="post_body">
+  <div class="post_header">
+    <h4>Post <%= @post.title %> by: <%= @post.author.name %> </h4>
+    <p>
+      Comments: <%= @post.comments_counter %> 
+      Likes: <%= @post.likes_counter %>
+    </p>
   </div>
-</div>
-<div class="create-btn">
-  <button><%= link_to 'Create comment', new_user_post_comment_path(@user.id,@post.id) %></button>
+  <p class="post-text"><%= @post.text %></p>
 </div>
   <div class="post-comments">
-  <% if @post.recent_comments.any? %>
-    <% Comment.where(post_id:@post.id).each do |comment| %>
-      <div>
-      <p><%= User.find_by(id: comment.author_id).name %>: <%= comment.text[0...100] %>...</p>
-    </div>
-  <% end %>
-<% else %>
-  <p>No comments added yet.</p>
-<% end %>
+    <% if @post.comments.empty? %>
+    <p>Add comment</p>
+    <% else %>
+    <% @post.recent_comments.each do |comment| %>
+      <p><%= comment.author.name %>: <%= comment.text %></p>
+    <%end%>
+    <%end%>
+</div>
+</div>
+<div class="user-action">
+<%= link_to 'Like ', "#{request.url}/likes/new", class:"like-btn" %>
+<a href="/users/<%= @user.id %>/posts/<%= @post.id %>/comments/new">
+<button class="comment-btn">
+        Add comment
+</button></a>
 </div>

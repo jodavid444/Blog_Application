@@ -4,17 +4,11 @@ class CommentsController < ApplicationController
   end
 
   def create
-    post = Post.find(params[:post_id])
-    @comment = Comment.new(params.require(:comment).permit(:text).merge(author_id: current_user.id, post_id: post.id))
-
-    respond_to do |format|
-      format.html do
-        if @comment.save
-          redirect_to user_post_path(current_user, post)
-        else
-          redirect_to new_user_post_comment_path(current_user)
-        end
-      end
+    @comment = Comment.new(post_id: params[:id], author: current_user, text: params[:text])
+    if @comment.save
+      redirect_to user_post_path(current_user.id, params[:id])
+    else
+      render :new, alert: 'Error: Comment not saved.'
     end
   end
 end

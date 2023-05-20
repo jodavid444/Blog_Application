@@ -1,12 +1,15 @@
+# This class represents a User.
+# A User can have many posts
+# It also has a name, bio, image, which are required fields.
 class User < ApplicationRecord
-  has_many :comments
-  has_many :likes
-  has_many :posts
+  has_many :likes, foreign_key: 'author_id'
+  has_many :comments, foreign_key: 'author_id'
+  has_many :posts, foreign_key: 'author_id'
 
   validates :name, presence: true
-  validates :posts_counter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :posts_counter, presence: true, numericality: { greater_than_or_equal_to: 0 }
 
   def recent_posts
-    Post.where(author_id: id).order(created_at: :desc).limit(3)
+    posts.order(created_at: :desc).limit(3)
   end
 end

@@ -1,10 +1,7 @@
-<h1>Users of website</h1>
-<% @users.each do |user|%>
-  <div class="user-container">
-    <img src= "<%=user.photo %>" alt="Profile Picture">
-    <div class="user-info">
-      <h3><%= link_to "#{user.name}", "#{users_path}/#{user.id}" %></h3>
-      <p class="number-of-posts">Number of posts: <%=user.posts_counter || 0%></p>
-    </div>
-  </div>
-<%end%>
+<div class="list-users"> 
+<% @users.each do |user| %>
+     <%= link_to(user) do %> 
+    <%= render "shared/details", user: user %> 
+    <%end%> 
+    <%end%> 
+</div>

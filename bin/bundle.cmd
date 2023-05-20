@@ -50,7 +50,7 @@ m = Module.new do
   def lockfile
     lockfile =
       case File.basename(gemfile)
-      when "gems.rb" then gemfile.sub(/\.rb$/, ".locked")
+      when "gems.rb" then gemfile.sub(/\.rb$/, gemfile)
       else "#{gemfile}.lock"
       end
     File.expand_path(lockfile)
